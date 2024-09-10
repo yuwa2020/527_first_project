@@ -17,10 +17,10 @@ const SigninModal = () => {
     return (
         <ScrollView contentContainerStyle={styles.container}>
         <View style={styles.container}>
-            <Button title = "Sign Up" onPress={() => setModalVisible(true)} />
+            <Button title = "Sign In" onPress={() => setModalVisible(true)} />
             <Modal visible={modalVisible} animationType="slide">
                 <View style={styles.modalContent}>
-                    <Text>Sign Up</Text>
+                    <Text>Sign In</Text>
                     <Text>Username</Text>
                     <TextInput
                         placeholder="Username"
