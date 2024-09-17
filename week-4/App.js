@@ -62,7 +62,7 @@ export default function App() {
           <Stack.Screen name="LandingScreen" component={LandingScreen} />
           <Stack.Screen name="UserSignupScreen" component={UserSignupScreen} />
           <Stack.Screen name="UserSigninScreen" component={SigninModal} />
-          <Stack.Screen name="HomeScreen" component={HomeScreen} />
+          <Stack.Screen name="HomeScreen" options={{headerLeft:null, gestureEnabled: false}} component={HomeScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </View>
