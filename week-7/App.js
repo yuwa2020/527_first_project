@@ -3,16 +3,31 @@ import { ScrollView, StyleSheet, Text, View, Image, Button } from 'react-native'
 import SigninModal from './components/UserSigninScreen';
 import UserSignupScreen from './components/UserSignupScreen';
 import HomeScreen from './components/HomeScreen';
+import ImagePickerScreen from './components/ImagePickerScreen';
+import LocationScreen from './components/LocationScreen';
 // import UserSigninScreen from './components/UserSigninScreen';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 
-
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
 
 const myImg = require('./assets/icon.png');
 
-const Stack = createStackNavigator();
+// const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
+
+function HomeDrawer() {
+  return (
+    <Drawer.Navigator initialRouteName="Home">
+      <Drawer.Screen name="Home" component={HomeScreen} />
+      <Drawer.Screen name="Image Picker" component={ImagePickerScreen} />
+      <Drawer.Screen name="Location" component={LocationScreen} />
+      {/* <Drawer.Screen name="Sign Out" component={handleLogOut} /> */}
+    </Drawer.Navigator>
+  );
+}
 
 
 function LandingScreen({ navigation }) {
@@ -39,11 +54,11 @@ export default function App() {
       {/* </ScrollView> */}
 
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator initialRouteName="LandingScreen">
           <Stack.Screen name="LandingScreen" component={LandingScreen} />
           <Stack.Screen name="UserSignupScreen" component={UserSignupScreen} />
           <Stack.Screen name="UserSigninScreen" component={SigninModal} />
-          <Stack.Screen name="HomeScreen" options={{headerLeft:null, gestureEnabled: false}} component={HomeScreen} />
+          <Stack.Screen name="HomeDrawer" options={{headerShown: false}} component={HomeDrawer} />
         </Stack.Navigator>
       </NavigationContainer>
     </View>
